@@ -42,7 +42,7 @@ jobs:
           SOURCE: "deploy/"
           REMOTE_HOST: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
           REMOTE_USER: ubuntu
-          TARGET: "nodeapps/recipe-backend"
+          TARGET: "nodeapps/travel-backend"
       - name: Execute SSH commmands on remote server
         uses: JimCronqvist/action-ssh@master
         env:
@@ -55,7 +55,7 @@ jobs:
             cd nodeapps/travel-backend
             npm install
             sudo systemctl stop travel-backend
-            sudo cp recipe-backend.service /lib/systemd/system/travel-backend.service
+            sudo cp travel-backend.service /lib/systemd/system/travel-backend.service
             sudo systemctl daemon-reload
             sudo systemctl start travel-backend
 
