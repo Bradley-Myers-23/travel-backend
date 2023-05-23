@@ -1,5 +1,5 @@
 name: AWS DEPLOY TO STAGING
-# turn off deploy to AWS
+# turn off deploy to AWSjhh
 
 on:
   pull_request:
@@ -40,7 +40,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-rltgoDzvO --delete"
           SOURCE: "deploy/"
-          REMOTE_HOST: "recipe.eaglesoftwareteam.com"
+          REMOTE_HOST: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
           REMOTE_USER: ubuntu
           TARGET: "nodeapps/recipe-backend"
       - name: Execute SSH commmands on remote server
@@ -58,3 +58,5 @@ jobs:
             sudo cp recipe-backend.service /lib/systemd/system/travel-backend.service
             sudo systemctl daemon-reload
             sudo systemctl start travel-backend
+
+           
