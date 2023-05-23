@@ -46,7 +46,7 @@ jobs:
       - name: Execute SSH commmands on remote server
         uses: JimCronqvist/action-ssh@master
         env:
-          NAME: "Root"
+          NAME: "root"
         with:
           hosts: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
           privateKey: ${{ secrets.SERVER_SSH_KEY }}
