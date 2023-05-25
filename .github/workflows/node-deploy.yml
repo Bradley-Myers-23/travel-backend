@@ -48,7 +48,7 @@ jobs:
         with:
           hosts: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
           privateKey: ${{ secrets.SERVER_SSH_KEY }}
-          debug: false
+         # debug: false
           command: |
             cd nodeapps/travel-backend
             npm install
