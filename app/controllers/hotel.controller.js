@@ -13,17 +13,37 @@ exports.create = (req, res) => {
     const error = new Error("PhoneNumber cannot be empty for hotel!");
     error.statusCode = 400;
     throw error;
-  } else if (req.body.Address === undefined) {
+  } else if (req.body.Address1 === undefined) {
     const error = new Error("Price per unit cannot be empty for hotel!");
     error.statusCode = 400;
     throw error;
   }
 
+  else if (req.body.State === undefined) {
+    const error = new Error("Price per unit cannot be empty for hotel!");
+    error.statusCode = 400;
+    throw error;
+  }
+  else if (req.body.City === undefined) {
+    const error = new Error("Price per unit cannot be empty for hotel!");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  else if (req.body.City === undefined) {
+    const error = new Error("Price per unit cannot be empty for hotel!");
+    error.statusCode = 400;
+    throw error;
+  }
   // Create a Hotel
   const hotel = {
     name: req.body.name,
     PhoneNumber: req.body.PhoneNumber,
-    Address: req.body.Address,
+    Address1: req.body.Address1,
+    Address2: req.body.Address2,
+    State: req.body.State,
+    City: req.body.City,
+    ZipCode:req.body.ZipCode,
   };
   // Save Hotel in the database
   Hotel.create(hotel)
