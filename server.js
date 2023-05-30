@@ -36,6 +36,8 @@ require("./app/routes/recipeIngredient.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/hotel.routes")(app);
 require("./app/routes/trip.routes")(app);
+require("./app/routes/day.routes")(app);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3201;
 if (process.env.NODE_ENV !== "test") {
