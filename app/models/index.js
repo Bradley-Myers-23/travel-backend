@@ -25,6 +25,7 @@ db.session = require("./session.model.js")(sequelize, Sequelize);
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.site = require("./site.model.js")(sequelize, Sequelize);
 db.hotel = require("./hotel.model.js")(sequelize, Sequelize);
+db.trip = require("./trip.model.js")(sequelize, Sequelize);
 // foreign key for session
 db.user.hasMany(
   db.session,
