@@ -29,6 +29,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/ingredient.routes")(app);
+require("./app/routes/site.routes")(app);
 require("./app/routes/recipe.routes")(app);
 require("./app/routes/recipeStep.routes")(app);
 require("./app/routes/recipeIngredient.routes")(app);
