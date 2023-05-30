@@ -15,7 +15,7 @@ jobs:
       DB_PW: ${{ secrets.AWS_DB_PW}}
       DB_USER: ${{ secrets.AWS_DB_USER }}
       DB_NAME: ${{ secrets.AWS_DB_NAME }}
-      SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
     steps:
       - uses: actions/checkout@v2
@@ -43,7 +43,7 @@ jobs:
           REMOTE_HOST: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
           REMOTE_USER: ubuntu
           TARGET: "nodeapps/travel-backend"
-          
+
       - name: Execute SSH commmands on remote server
         uses: JimCronqvist/action-ssh@master
         env:
@@ -58,4 +58,6 @@ jobs:
             sudo systemctl stop travel-backend
             sudo cp travel-backend.service /lib/systemd/system/travel-backend.service
             sudo systemctl daemon-reload
+            sudo systemctl start travel-backend
+            sudo systemctl start travel-backend
             sudo systemctl start travel-backend
