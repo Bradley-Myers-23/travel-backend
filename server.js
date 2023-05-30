@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the recipe backend." });
+  res.json({ message: "Welcome to the trip backend." });
 });
 
 require("./app/routes/auth.routes.js")(app);
@@ -34,6 +34,8 @@ require("./app/routes/recipeStep.routes")(app);
 require("./app/routes/recipeIngredient.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/day.routes")(app);
+require("./app/routes/trip.routes")(app);
+require("./app/routes/tripDay.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3201;
