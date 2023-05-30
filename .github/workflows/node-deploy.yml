@@ -1,6 +1,6 @@
 name: AWS DEPLOY TO STAGING
-# turn off deploy to AWSjhh
-
+# turn off deploy to AWS
+#test
 on:
   pull_request:
     types: [closed]
@@ -26,11 +26,11 @@ jobs:
 
       - run: |
           touch .env
-          echo DB_HOST = "$AWS_DB_HOST" >> .env
-          echo DB_PW = "$AWS_DB_PW" >> .env
-          echo DB_USER = "$AWS_DB_USER" >> .env
-          echo DB_NAME = "$AWS_DB_NAME" >> .env
-          echo SECRET_KEY = "$AWS_SECRET_KEY" >> .env
+          echo DB_HOST = "$DB_HOST" >> .env
+          echo DB_PW = "$DB_PW" >> .env
+          echo DB_USER = "$DB_USER" >> .env
+          echo DB_NAME = "$DB_NAME" >> .env
+          echo SECRET_KEY = "$SECRET_KEY" >> .env
 
       - run: npm run bundle
 
@@ -43,10 +43,11 @@ jobs:
           REMOTE_HOST: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
           REMOTE_USER: ubuntu
           TARGET: "nodeapps/travel-backend"
+
       - name: Execute SSH commmands on remote server
         uses: JimCronqvist/action-ssh@master
         env:
-          NAME: "ubuntu"
+          NAME: "Root"
         with:
           hosts: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
           privateKey: ${{ secrets.SERVER_SSH_KEY }}
@@ -59,4 +60,3 @@ jobs:
             sudo systemctl daemon-reload
             sudo systemctl start travel-backend
 
-           
