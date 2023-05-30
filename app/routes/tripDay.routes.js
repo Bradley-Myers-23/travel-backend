@@ -14,13 +14,13 @@ module.exports = (app) => {
     router.get("/tripDays/", tripDay.findAll);
   
     // Retrieve all trip Days for a trip
-    router.get("/trips/:tripId/tripDays/", tripDay.findAllFortrip);
+    router.get("/trips/:tripId/tripDays/", tripDay.findAllForTrip);
   
-    // Retrieve all trip Days for a trip and include the ingredients
+    /* Retrieve all trip Days for a trip and include the ingredients
     router.get(
       "/trips/:tripId/tripDaysWithIngredients/",
       tripDay.findAllFortripWithIngredients
-    );
+    );*/
   
     // Retrieve a single trip Day with id
     router.get("/trips/:tripId/tripDays/:id", tripDay.findOne);

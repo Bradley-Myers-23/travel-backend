@@ -21,13 +21,13 @@ exports.create = (req, res) => {
   }
 
   // Create a TripDay
-  const TripDay = {
+  const newTripDay = {
     DayNumber: req.body.DayNumber,
     instruction: req.body.instruction,
     TripId: req.body.TripId,
   };
   // Save TripDay in the database
-  TripDay.create(TripDay)
+  TripDay.create(newTripDay)
     .then((data) => {
       res.send(data);
     })
