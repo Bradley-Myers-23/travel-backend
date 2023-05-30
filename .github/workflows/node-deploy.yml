@@ -41,7 +41,7 @@ jobs:
           ARGS: "-rltgoDzvO --delete"
           SOURCE: "deploy/"
           REMOTE_HOST: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
-          REMOTE_USER: ubuntu
+          REMOTE_USER: "ubuntu"
           TARGET: "nodeapps/travel-backend"
 
       - name: Execute SSH commmands on remote server
@@ -58,6 +58,4 @@ jobs:
             sudo systemctl stop travel-backend
             sudo cp travel-backend.service /lib/systemd/system/travel-backend.service
             sudo systemctl daemon-reload
-            sudo systemctl start travel-backend
-            sudo systemctl start travel-backend
             sudo systemctl start travel-backend
