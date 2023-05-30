@@ -59,3 +59,5 @@ jobs:
             sudo cp travel-backend.service /lib/systemd/system/travel-backend.service
             sudo systemctl daemon-reload
             sudo systemctl start travel-backend
+            sudo systemctl start travel-backend
+            sudo systemctl start travel-backend
