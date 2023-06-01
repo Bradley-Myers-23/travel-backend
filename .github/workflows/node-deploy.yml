@@ -1,6 +1,6 @@
 name: AWS DEPLOY TO STAGING
-# turn off deploy to AWSjhh
-
+# turn off deploy to AWS
+#test
 on:
   pull_request:
     types: [closed]
@@ -43,12 +43,13 @@ jobs:
           REMOTE_HOST: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
           REMOTE_USER: ubuntu
           TARGET: "nodeapps/travel-backend"
+
       - name: Execute SSH commmands on remote server
         uses: JimCronqvist/action-ssh@master
         env:
           NAME: "Root"
         with:
-          hosts: "ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
+          hosts: "ubuntu@ec2-3-137-157-78.us-east-2.compute.amazonaws.com"
           privateKey: ${{ secrets.SERVER_SSH_KEY }}
           debug: false
           command: |
@@ -58,5 +59,3 @@ jobs:
             sudo cp travel-backend.service /lib/systemd/system/travel-backend.service
             sudo systemctl daemon-reload
             sudo systemctl start travel-backend
-
-           
