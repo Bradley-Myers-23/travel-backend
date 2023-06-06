@@ -1,6 +1,6 @@
 name: AWS DEPLOY TO STAGING
 # turn off deploy to AWS
-#test
+#testings
 on:
   pull_request:
     types: [closed]
