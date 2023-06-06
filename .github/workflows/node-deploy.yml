@@ -1,6 +1,6 @@
 name: AWS DEPLOY TO STAGING
 # turn off deploy to AWS
-#testings
+#test
 on:
   pull_request:
     types: [closed]
@@ -59,3 +59,4 @@ jobs:
             sudo cp travel-backend.service /lib/systemd/system/travel-backend.service
             sudo systemctl daemon-reload
             sudo systemctl start travel-backend
+            
