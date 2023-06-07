@@ -4,7 +4,7 @@ module.exports = (app) => {
   const { authenticateRoute } = require("../authentication/authentication");
 
   // Create a new Ingredient
-  router.post("/ingredients/", [authenticateRoute], Ingredient.create);
+  router.post("/ingredients/",Ingredient.create);
 
   // Retrieve all Ingredient
   router.get("/ingredients/", Ingredient.findAll);
@@ -13,13 +13,13 @@ module.exports = (app) => {
   router.get("/ingredients/:id", Ingredient.findOne);
 
   // Update an Ingredient with ingredientId
-  router.put("/ingredients/:id", [authenticateRoute], Ingredient.update);
+  router.put("/ingredients/:id",Ingredient.update);
 
   // Delete an Ingredient with ingredientId
-  router.delete("/ingredients/:id", [authenticateRoute], Ingredient.delete);
+  router.delete("/ingredients/:id",Ingredient.delete);
 
   // Create a new Ingredient
-  router.delete("/ingredients/", [authenticateRoute], Ingredient.deleteAll);
+  router.delete("/ingredients/",Ingredient.deleteAll);
 
   app.use("/travelapi", router);
 };
