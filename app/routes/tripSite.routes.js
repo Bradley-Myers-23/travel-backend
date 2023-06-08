@@ -46,4 +46,6 @@ module.exports = (app) => {
     [authenticateRoute],
     TripSite.deleteAll
   );
+
+  app.use("/travelapi", router);
 }
