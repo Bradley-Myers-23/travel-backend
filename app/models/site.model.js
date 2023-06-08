@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
     },
     picture: {
-      type: Sequelize.BLOB,
+      type: Sequelize.TEXT('long'),
       allowNull: true,
     },
   });
