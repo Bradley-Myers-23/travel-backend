@@ -27,6 +27,7 @@ db.site = require("./site.model.js")(sequelize, Sequelize);
 db.hotel = require("./hotel.model.js")(sequelize, Sequelize);
 db.trip = require("./trip.model.js")(sequelize, Sequelize);
 db.day = require("./day.model.js")(sequelize, Sequelize);
+db.userTrip = require("./userTrip.model.js")(sequelize, Sequelize);
 
 // foreign key for session
 db.user.hasMany(
@@ -40,29 +41,18 @@ db.session.belongsTo(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
-// foreign key for recipe
-db.user.hasMany(
-  db.recipe,
-  { as: "recipe" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// foreign key for userTrip
+db.userTrip.belongsTo(
+  db.trip,
+  { as: "trip" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
 );
-db.recipe.belongsTo(
+db.userTrip.belongsTo(
   db.user,
   { as: "user" },
   { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
 );
 
-// foreign key for recipeStep
-db.recipe.hasMany(
-  db.recipeStep,
-  { as: "recipeStep" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
-db.recipeStep.belongsTo(
-  db.recipe,
-  { as: "recipe" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
 
 // foreign keys for recipeIngredient
 db.recipeStep.hasMany(
