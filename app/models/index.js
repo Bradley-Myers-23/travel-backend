@@ -26,7 +26,6 @@ db.user = require("./user.model.js")(sequelize, Sequelize);
 db.site = require("./site.model.js")(sequelize, Sequelize);
 db.hotel = require("./hotel.model.js")(sequelize, Sequelize);
 db.trip = require("./trip.model.js")(sequelize, Sequelize);
-db.day = require("./day.model.js")(sequelize, Sequelize);
 db.tripSite = require("./tripSite.model.js")(sequelize, Sequelize);
 db.tripDay = require("./tripDay.model.js")(sequelize, Sequelize);
 
