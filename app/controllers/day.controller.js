@@ -1,29 +1,49 @@
 const db = require("../models");
 const Day = db.day;
+const Hotel = db.hotel;
 const Op = db.Sequelize.Op;
+// find hotel in spesfic day
+exports.findAllHotel = (req, res) => {
+  const tripId = req.params.id;
+ 
+  Day.findAll({
+    where: {
+      tripId: tripId,
+     
+    },
+    include: [
+      {
+        model: Hotel,
+        as: 'hotel',
+        required: true,
+      },
+    ],
+  }).then((data) => {
+      res.send(data);
+    })
 
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while retrieving recipeIngredients for a recipe.",
+      });
+    });
+};
 // Create and Save a new Day
 exports.create = (req, res) => {
   // Validate request
-  if (req.body.dayId === undefined) {
+  if (req.body.day === undefined) {
     const error = new Error("Id cannot be empty for Day!");
-    error.statusCode = 400;
-    throw error;
-  } else if (req.body.name === undefined) {
-    const error = new Error("Day cannot be empty for Day!");
-    error.statusCode = 400;
-    throw error;
-  } else if (req.body.description === undefined) {
-    const error = new Error("Description cannot be empty for Day!");
     error.statusCode = 400;
     throw error;
   }
 
   // Create a Day
   const day = {
-    dayId: req.body.dayId,
-    name: req.body.name,
-    description: req.body.description,
+    day: req.body.day,
+    hotelId: req.body.hotelId,
+    tripId: req.body.tripId,
   };
   // Save Day in the database
   Day.create(day)
@@ -32,8 +52,7 @@ exports.create = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Day.",
+        message: err.message || "Some error occurred while creating the Day.",
       });
     });
 };
@@ -49,14 +68,13 @@ exports.findAll = (req, res) => {
       }
     : null;
 
-  Day.findAll({ where: condition, order: [["name", "ASC"]] })
+  Day.findAll({ where: condition, order: [["day", "ASC"]] })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Days.",
+        message: err.message || "Some error occurred while retrieving Days.",
       });
     });
 };
@@ -137,8 +155,7 @@ exports.deleteAll = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all Days.",
+        message: err.message || "Some error occurred while removing all Days.",
       });
     });
 };

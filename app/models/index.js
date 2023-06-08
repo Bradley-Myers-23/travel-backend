@@ -95,5 +95,35 @@ db.recipeIngredient.belongsTo(
   { as: "ingredient" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
+db.trip.hasMany(
+  db.day,
+  { as: "day" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.day.belongsTo(
+  db.trip,
+  { as: "trip" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.hotel.hasMany(
+  db.day,
+  { as: "day" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.day.belongsTo(
+  db.hotel,
+  { as: "hotel" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+// db.site.belongsToMany(db.day, {
+//   through: "site_day",
+//   as: "days",
+//   foreignKey: "site_id",
+// });
 
+// db.day.belongsToMany(db.site, {
+//   through: "site_day",
+//   as: "sites",
+//   foreignKey: "day_id",
+// });
 module.exports = db;

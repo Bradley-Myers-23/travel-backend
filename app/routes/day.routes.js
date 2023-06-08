@@ -4,11 +4,14 @@ module.exports = (app) => {
     const { authenticateRoute } = require("../authentication/authentication.js");
   
     // Create a new Day
-    router.post("/days/", [authenticateRoute], Day.create);
+    router.post("/days/",  Day.create);
   
     // Retrieve all Days
     router.get("/days/", Day.findAll);
-  
+   // Retrieve all hotel for specific Days
+   router.get("/days/trip/:id", Day.findAllHotel);
+
+   
     // Retrieve a single Day with dayId
     router.get("/days/:id", Day.findOne);
   
