@@ -25,7 +25,6 @@ exports.create = (req, res) => {
   const tripSite = {
     quantity: req.body.quantity,
     tripId: req.body.tripId,
-    tripStepId: req.body.tripStepId ? req.body.tripStepId : null,
     siteId: req.body.siteId,
   };
   // Save TripSite in the database
@@ -91,30 +90,7 @@ exports.findAllForTrip = (req, res) => {
     });
 };
 
-// Find all TripSites for a trip step and include the sites
-exports.findAllForTripStepWithSites = (req, res) => {
-  const tripStepId = req.params.tripStepId;
-  TripSite.findAll({
-    where: { tripStepId: tripStepId },
-    include: [
-      {
-        model: Site,
-        as: "site",
-        required: true,
-      },
-    ],
-  })
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message ||
-          "Some error occurred while retrieving tripSites for a trip step.",
-      });
-    });
-};
+
 
 // Find a single TripSite with an id
 exports.findOne = (req, res) => {

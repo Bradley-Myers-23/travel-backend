@@ -27,6 +27,29 @@ db.site = require("./site.model.js")(sequelize, Sequelize);
 db.hotel = require("./hotel.model.js")(sequelize, Sequelize);
 db.trip = require("./trip.model.js")(sequelize, Sequelize);
 db.day = require("./day.model.js")(sequelize, Sequelize);
+db.tripSite = require("./tripSite.model.js")(sequelize, Sequelize);
+
+// foreign keys for tripSite
+db.trip.hasMany(
+  db.tripSite,
+  { as: "tripSite" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.site.hasMany(
+  db.tripSite,
+  { as: "tripSite" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.tripSite.belongsTo(
+  db.trip,
+  { as: "trip" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.tripSite.belongsTo(
+  db.site,
+  { as: "site" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 
 // foreign key for session
 db.user.hasMany(
