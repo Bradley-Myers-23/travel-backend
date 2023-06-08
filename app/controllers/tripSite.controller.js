@@ -5,11 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new TripSite
 exports.create = (req, res) => {
   // Validate request
-  if (req.body.quantity === undefined) {
-    const error = new Error("Quantity cannot be empty for trip site!");
-    error.statusCode = 400;
-    throw error;
-  } else if (req.body.tripId === undefined) {
+  if (req.body.tripId === undefined) {
     const error = new Error("Trip ID cannot be empty for trip site!");
     error.statusCode = 400;
     throw error;
@@ -25,6 +21,7 @@ exports.create = (req, res) => {
   const tripSite = {
     quantity: req.body.quantity,
     tripId: req.body.tripId,
+    tripDayId: req.body.tripDayId ? req.body.tripDayId : null,
     siteId: req.body.siteId,
   };
   // Save TripSite in the database
@@ -90,7 +87,30 @@ exports.findAllForTrip = (req, res) => {
     });
 };
 
-
+// Find all TripSites for a trip day and include the sites
+exports.findAllForTripDayWithSites = (req, res) => {
+  const tripDayId = req.params.tripDayId;
+  TripSite.findAll({
+    where: { tripDayId: tripDayId },
+    include: [
+      {
+        model: Site,
+        as: "site",
+        required: true,
+      },
+    ],
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while retrieving tripSites for a trip day.",
+      });
+    });
+};
 
 // Find a single TripSite with an id
 exports.findOne = (req, res) => {

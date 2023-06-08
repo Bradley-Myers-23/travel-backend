@@ -1,8 +1,7 @@
 module.exports = (app) => {
   const TripSite = require("../controllers/tripSite.controller.js");
-  const router = require("express").Router();
+  var router = require("express").Router();
   const { authenticateRoute } = require("../authentication/authentication");
-
 
   // Create a new Trip Site for a Trip
   router.post(
@@ -18,6 +17,12 @@ module.exports = (app) => {
   router.get(
     "/trips/:tripId/tripSites/",
     TripSite.findAllForTrip
+  );
+
+  // Retrieve all Trip Sites for a Trip Day and include the sites
+  router.get(
+    "/trips/:tripId/tripDays/:tripDayId/tripSitesWithSites/",
+    TripSite.findAllForTripDayWithSites
   );
 
   // Retrieve a single Trip Site with id
@@ -48,4 +53,4 @@ module.exports = (app) => {
   );
 
   app.use("/travelapi", router);
-}
+};
