@@ -1,8 +1,7 @@
 module.exports = (app) => {
   const TripSite = require("../controllers/tripSite.controller.js");
-  const router = require("express").Router();
+  var router = require("express").Router();
   const { authenticateRoute } = require("../authentication/authentication");
-
 
   // Create a new Trip Site for a Trip
   router.post(

@@ -1,6 +1,7 @@
 const db = require("../models");
 const Trip = db.trip;
 const Op = db.Sequelize.Op;
+const {dateRange} = require('../views/EditTrip.vue');
 
 // Create and Save a new Trip
 exports.create = (req, res) => {
