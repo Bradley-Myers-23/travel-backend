@@ -2,34 +2,6 @@ const db = require("../models");
 const Day = db.day;
 const Hotel = db.hotel;
 const Op = db.Sequelize.Op;
-// find hotel in spesfic day
-exports.findAllHotel = (req, res) => {
-  const tripId = req.params.id;
- 
-  Day.findAll({
-    where: {
-      tripId: tripId,
-     
-    },
-    include: [
-      {
-        model: Hotel,
-        as: 'hotel',
-        required: true,
-      },
-    ],
-  }).then((data) => {
-      res.send(data);
-    })
-
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message ||
-          "Some error occurred while retrieving recipeIngredients for a recipe.",
-      });
-    });
-};
 // Create and Save a new Day
 exports.create = (req, res) => {
   // Validate request
