@@ -1,7 +1,9 @@
 const db = require("../models");
 const TripDay = db.tripDay;
 const TripSite = db.tripSite;
+const HotelDay = db.hotelDay;
 const Site = db.site;
+const Hotel = db.hotel;
 const Op = db.Sequelize.Op;
 // Create and Save a new TripDay
 exports.create = (req, res) => {
@@ -20,6 +22,7 @@ exports.create = (req, res) => {
   const tripDay = {
     dayNumber: req.body.dayNumber,
     tripId: req.body.tripId,
+    description: req.body.description,
   };
   // Save TripDay in the database
   TripDay.create(tripDay)
@@ -77,7 +80,7 @@ exports.findAllForTrip = (req, res) => {
 };
 
 // Find all TripDays for a trip and include the sites
-exports.findAllForTripWithSites = (req, res) => {
+exports.findAllForTripWithData = (req, res) => {
   const tripId = req.params.tripId;
   TripDay.findAll({
     where: { tripId: tripId },
@@ -94,6 +97,18 @@ exports.findAllForTripWithSites = (req, res) => {
           },
         ],
       },
+      {
+        model: HotelDay,
+        as: "hotelDay",
+        required: false,
+        include: [
+          {
+            model: Hotel,
+            as: "hotel",
+            required: false,
+          },
+        ],
+      }
     ],
     order: [["dayNumber", "ASC"]],
   })
@@ -104,7 +119,7 @@ exports.findAllForTripWithSites = (req, res) => {
       res.status(500).send({
         message:
           err.message ||
-          "Some error occurred while retrieving tripSites for a trip day.",
+          "Some error occurred while retrieving data for a trip day.",
       });
     });
 };

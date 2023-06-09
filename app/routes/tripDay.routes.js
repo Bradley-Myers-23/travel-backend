@@ -18,8 +18,8 @@ module.exports = (app) => {
 
   // Retrieve all Trip Days for a Trip and include the sites
   router.get(
-    "/trips/:tripId/tripDaysWithSites/",
-    TripDay.findAllForTripWithSites
+    "/trips/:tripId/tripDaysWithData/",
+    TripDay.findAllForTripWithData
   );
 
   // Retrieve a single Trip Day with id

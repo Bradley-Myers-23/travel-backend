@@ -4,6 +4,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
+    description: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
   });
   return TripDay;
 };
