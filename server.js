@@ -38,6 +38,7 @@ require("./app/routes/hotel.routes")(app);
 require("./app/routes/trip.routes")(app);
 require("./app/routes/tripSite.routes")(app);
 require("./app/routes/tripDay.routes")(app);
+require("./app/routes/day.routes")(app);
 require("./app/routes/userTrip.routes")(app);
 
 
