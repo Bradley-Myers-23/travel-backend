@@ -39,6 +39,7 @@ require("./app/routes/trip.routes")(app);
 require("./app/routes/tripSite.routes")(app);
 require("./app/routes/tripDay.routes")(app);
 require("./app/routes/userTrip.routes")(app);
+require("./app/routes/hotelDay.routes")(app);
 
 
 // set port, listen for requests
