@@ -9,7 +9,7 @@ exports.create = (req, res) => {
     const error = new Error("Head Count must be specified!");
     error.statusCode = 400;
     throw error;
-  } else if (req.body.tripId === undefined) {
+  } else if (req.params.tripId === undefined) {
     const error = new Error("Trip ID cannot be empty for Users per Trip!");
     error.statusCode = 400;
     throw error;
@@ -24,7 +24,7 @@ exports.create = (req, res) => {
   // Create a UserTrip
   const userTrip = {
     headCount: req.body.headCount,
-    tripId: req.body.tripId,
+    tripId: req.params.tripId,
     userId: req.body.userId,
   };
   // Save UserTrip in the database

@@ -6,7 +6,7 @@ module.exports = (app) => {
     // Create a new UserTrip for a Recipe
     router.post(
       "/trips/:tripId/userTrips/",
-      [authenticateRoute],
+      
       UserTrip.create
     );
   
