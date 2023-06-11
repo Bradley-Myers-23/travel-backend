@@ -24,7 +24,7 @@ exports.create = (req, res) => {
   // Create a UserTrip
   const userTrip = {
     headCount: req.body.headCount,
-    tripId: req.body.tripId,
+    tripId: req.params.tripId,
     userId: req.body.userId,
   };
   // Save UserTrip in the database
