@@ -3,7 +3,7 @@ module.exports = (app) => {
     var router = require("express").Router();
     const { authenticateRoute } = require("../authentication/authentication");
   
-    // Create a new UserTrip for a Recipe
+    // Create a new UserTrip for a Trip
     router.post(
       "/trips/:tripId/userTrips/",
       [authenticateRoute],

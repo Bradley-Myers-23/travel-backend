@@ -24,15 +24,11 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the recipe backend." });
+  res.json({ message: "Welcome to the travel backend." });
 });
 
 require("./app/routes/auth.routes.js")(app);
-require("./app/routes/ingredient.routes")(app);
 require("./app/routes/site.routes")(app);
-require("./app/routes/recipe.routes")(app);
-require("./app/routes/recipeStep.routes")(app);
-require("./app/routes/recipeIngredient.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/hotel.routes")(app);
 require("./app/routes/trip.routes")(app);

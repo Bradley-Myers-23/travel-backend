@@ -78,26 +78,26 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a Recipe by the id in the request
+// Update a Trip by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  Recipe.update(req.body, {
+  Trip.update(req.body, {
     where: { id: id },
   })
     .then((number) => {
       if (number == 1) {
         res.send({
-          message: "Recipe was updated successfully.",
+          message: "Trip was updated successfully.",
         });
       } else {
         res.send({
-          message: `Cannot update Recipe with id=${id}. Maybe Recipe was not found or req.body is empty!`,
+          message: `Cannot update Trip with id=${id}. Maybe Trip was not found or req.body is empty!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Error updating Recipe with id=" + id,
+        message: err.message || "Error updating Trip with id=" + id,
       });
     });
 };
