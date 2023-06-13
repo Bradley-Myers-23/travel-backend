@@ -1,7 +1,7 @@
 {
   "name": "travel-backend",
   "version": "1.0.0",
-  "description": "Recipe Node.js with Rest API",
+  "description": "Travel Node.js with Rest API",
   "main": "server.js",
   "scripts": {
     "test": "jest --",
